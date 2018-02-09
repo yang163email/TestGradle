@@ -1,0 +1,53 @@
+task putOnSocks {
+    doLast {
+        println "Putting on Socks."
+    }
+}
+//dependsOn     在指定任务执行完毕之后才执行本任务
+task putOnShoes {
+    dependsOn "putOnSocks"
+    doLast {
+        println "Putting on Shoes."
+    }
+}
+
+//finalizedBy   在本任务执行完毕之后再执行此字段标识的任务
+task eatBreakfast {
+    finalizedBy "brushYourTeeth"
+    doLast {
+        println "Om nom nom breakfast!"
+    }
+}
+
+task brushYourTeeth {
+    doLast {
+        println "Brushie Brushie Brushie"
+    }
+}
+
+
+task takeShower {
+    doLast {
+        println "Taking a shower."
+    }
+}
+
+task putOnFragrance {
+    shouldRunAfter "takeShower"
+    doLast {
+        println "Smellin' fresh!"
+    }
+}
+
+task getReady {
+    dependsOn = ["takeShower", "eatBreakfast", "putOnShoes"]
+}
+
+putOnShoes.mustRunAfter takeShower
+
+task getEquipped {
+    dependsOn tasks.matching { task -> task.name.startsWith("putOn") }
+    doLast {
+        println "All geared up!"
+    }
+}
