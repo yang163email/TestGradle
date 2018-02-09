@@ -1,0 +1,21 @@
+1. 执行task（默认执行build.gradle文件中的task）
+    =>  gradle <task>                   sample =>   gradle hello
+
+2. 指定文件执行task
+    =>  gradle -b <file> <task>         sample =>   gradle -b solution.gradle hello
+
+3. 静默模式运行（无诊断输出, 在gradle 后面添加 -q 即可）
+    =>  gradle -q <task>    等等其他类似命令    sample =>   gradle -q hello
+
+4. 查看所有task
+    =>  gradle tasks --all
+
+5. 查看指定task详情
+    =>  gradle help --task <task>       sample =>   gradle help --task hello
+
+6. 当task中使用 mustRunAfter 时，测试task   (见test06, task1, task2没有顺序要求)
+    =>  gradle <task1>  <task2>         sample =>   gradle hello world
+
+7. 执行task时可以对task名简写，如task名为 helloWorld,可以缩写为hW。
+    （注意：1. 对大小写敏感；2. 如果有多个任务时，使用简写不能区分，会报错）
+    sample =>   gradle hW
