@@ -1,0 +1,40 @@
+project.task("myTask1")
+
+task("myTask2")
+
+task "myTask3"
+
+task myTask4
+
+myTask4.description = "This is what's shown in the task list"
+myTask4.group = "This is the heading for this task in the task list,"
+
+myTask4.doLast {
+    println "Do this last"
+}
+
+myTask4.doFirst {
+    println "Do this first"
+}
+
+task myTask6 {
+    description "Here's a task with a configuration block"
+    group "Some group"
+    doLast {
+        println "Here's the action"
+    }
+}
+
+task myTask7 {
+    description("Description")
+    group = "Some group"
+    doLast {
+        println "Here's the action"
+    }
+}
+
+task myTask8(description: "Another description") {
+    doLast {
+        println "Doing something"
+    }
+}
