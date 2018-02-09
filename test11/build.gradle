@@ -1,0 +1,9 @@
+task printGreeting {
+    doLast {
+        println greeting
+    }
+}
+
+ext {
+    greeting = "Hello from inside the solution script"
+}
