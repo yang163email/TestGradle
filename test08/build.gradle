@@ -1,0 +1,49 @@
+task copyTask(type: Copy)
+//拷贝指定路径文件夹文件到目标文件夹
+task copyImages(type: Copy) {
+    from 'images'
+    into 'build'
+}
+//拷贝指定目录下的对应格式文件到目标目录下
+task copyJpegs(type: Copy) {
+    from 'images'
+    include '*.jpg'
+    into 'build'
+}
+//拷贝多个不同文件到指定目录下
+task copyImageFolders(type: Copy) {
+    from('images') {
+        include '*.jpg'
+        into 'jpeg'
+    }
+    from('images') {
+        include '*.gif'
+        into 'gif'
+    }
+    into 'build'
+}
+//压缩文件
+task zipImages(type: Zip) {
+    baseName = 'image'
+    destinationDir = file('build')
+    from 'images'
+}
+//分类压缩
+task zipImageFolders(type: Zip) {
+    baseName = 'image'
+    destinationDir = file('build')
+
+    from('images') {
+        include '*.jpg'
+        into 'jpeg'
+    }
+    from('images') {
+        include '*.gif'
+        into 'gif'
+    }
+}
+//删除文件/文件夹
+task deleteBuild(type: Delete) {
+//    delete 'build/image.zip'
+    delete 'build'
+}
