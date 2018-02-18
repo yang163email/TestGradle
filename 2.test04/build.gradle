@@ -1,0 +1,33 @@
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+    jcenter()
+}
+
+repositories {
+    maven {
+        url 'https://repo.foo.org/m2'
+    }
+}
+
+repositories {
+    ivy {
+        url 'https://repo.foo.org/ivy'
+        credentials {
+            username 'user'
+            password 'secret'
+        }
+    }
+}
+
+repositories {
+    ivy {
+        url 'file:///home/user/repo'
+    }
+}
