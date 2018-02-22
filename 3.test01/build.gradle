@@ -1,0 +1,13 @@
+task tellJoke {
+    doLast {
+        println "What's a build master's favorite black metal band?"
+        println "Gradle of Filth!"
+    }
+}
+
+ task tellAnotherJoke {
+     doLast {
+         println "How long does it take to master build tools?"
+         println "From the Gradle to the grave."
+     }
+ }
